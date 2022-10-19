@@ -1,0 +1,10 @@
+language: generic 
+sudo: required
+services:
+  - docker
+
+before install:
+  - docker build -t bnuar/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true bnuar/docker-react npm run test
